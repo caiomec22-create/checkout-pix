@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Pagamento Seguro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento PIX</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,16 +13,46 @@
 </header>
 
 <main class="container">
-  <div class="box">
+
+  <!-- IDENTIFICAÇÃO -->
+  <div class="card">
     <h2>Identificação</h2>
 
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="text" id="nome" placeholder="Nome completo" required>
-
-    <button onclick="pagar()">Pagar</button>
+    <input type="email" id="email" placeholder="Seu email">
+    <input type="text" id="nome" placeholder="Seu nome completo">
   </div>
+
+  <!-- PAGAMENTO -->
+  <div class="card">
+    <h2>Pagamento via PIX</h2>
+
+    <img 
+      class="qr"
+      src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=00020126580014br.gov.bcb.pix01366adb895b-075f-455a-95be-28e6d1556e7127600016BR.COM.PAGSEGURO0136369B89AD-2A68-4EFF-B202-7702EBD4793B520473115303986540547.905802BR592551.094.781%20CAIO%20RICARDO%20S6011Sete%20Lagoas62290525PAGS000004790260107143634630475AB"
+      alt="QR Code PIX"
+    >
+
+    <p class="valor">Valor: <strong>R$ 47,90</strong></p>
+
+    <textarea id="pix" readonly>
+00020126580014br.gov.bcb.pix01366adb895b-075f-455a-95be-28e6d1556e7127600016BR.COM.PAGSEGURO0136369B89AD-2A68-4EFF-B202-7702EBD4793B520473115303986540547.905802BR592551.094.781 CAIO RICARDO S6011Sete Lagoas62290525PAGS000004790260107143634630475AB
+    </textarea>
+
+    <button onclick="copiarPix()">Copiar PIX</button>
+  </div>
+
 </main>
 
-<script src="script.js"></script>
+<script>
+function copiarPix() {
+  const pix = document.getElementById("pix");
+  pix.select();
+  pix.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(pix.value);
+  alert("Código PIX copiado!");
+}
+</script>
+
 </body>
 </html>
+
