@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagamento PIX</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  PAGAMENTO 100% SEGURO
+</header>
+
+<main class="container">
+  <div class="box">
+    <h2>Escaneie o QR Code ou copie o código PIX</h2>
+
+    <!-- QR Code -->
+    <img 
+      src="qrcode.png" 
+      alt="QR Code PIX" 
+      class="qr"
+    >
+
+    <p class="valor">Valor: <strong>R$ 47,90</strong></p>
+
+    <!-- Código PIX -->
+    <textarea id="pix" readonly>
+00020126580014br.gov.bcb.pix01366adb895b-075f-455a-95be-28e6d1556e7127600016BR.COM.PAGSEGURO0136369B89AD-2A68-4EFF-B202-7702EBD4793B520473115303986540547.905802BR592551.094.781 CAIO RICARDO S6011Sete Lagoas62290525PAGS000004790260107143634630475AB
+    </textarea>
+
+    <button onclick="copiarPix()">Copiar PIX</button>
+  </div>
+</main>
+
+<script>
+function copiarPix() {
+  const pix = document.getElementById("pix");
+  pix.select();
+  pix.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(pix.value);
+  alert("Código PIX copiado!");
+}
+</script>
+
+</body>
+</html>
